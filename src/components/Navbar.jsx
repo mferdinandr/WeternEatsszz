@@ -19,9 +19,13 @@ const Navbar = () => {
       </div>
 
       {/* Seacrh Bar */}
-      <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500pxx]">
+      <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
         <AiOutlineSearch size={30} />
-        <input type="text" placeholder="Search foods..." />
+        <input
+          className="bg-transparent p-2 pl-3 w-full focus:outline-none"
+          type="text"
+          placeholder="Search foods..."
+        />
       </div>
     </div>
   );
