@@ -150,7 +150,7 @@ const Food = ({ children, style, showItem, filter }) => {
       {/* Overlay */}
 
       {overlay ? (
-        <div className="bg-black/90 fixed inset-y-4 inset-x-1 z-30 rounded-lg scale-100 duration-200 lg:inset-x-40 md:inset-x-10">
+        <div className="bg-black/90 fixed inset-y-4 inset-x-2 z-30 rounded-lg scale-100 duration-200 lg:inset-x-40 md:inset-x-10">
           <button
             className="w-full flex justify-end p-4"
             onClick={() => setOverlay(!overlay)}
