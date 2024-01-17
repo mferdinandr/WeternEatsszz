@@ -55,7 +55,7 @@ const Food = () => {
           <div className="flex justify-start flex-wrap gap-1">
             <FilterButton onClick={() => setFoods(data)}>All</FilterButton>
             <FilterButton onClick={() => filterFavorit()}>
-              <div className='flex items-center gap-2'>
+              <div className="flex items-center gap-2">
                 <MdFavorite />
                 Favorite
               </div>
@@ -109,6 +109,9 @@ const Food = () => {
           <h1 className="font-bold text-2xl p-4 w-full">No One Matches Here</h1>
         )}
       </div>
+      <button className="m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white w-1/2 flex justify-center mx-auto mt-8">
+        More Foods
+      </button>
     </div>
   );
 };

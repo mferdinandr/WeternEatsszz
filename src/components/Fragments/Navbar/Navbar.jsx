@@ -5,9 +5,14 @@ import {
   AiOutlineClose,
   AiFillTag,
 } from 'react-icons/ai';
-import { BsFillCartFill, BsFillSaveFill } from 'react-icons/bs';
+import {
+  BsFillCartFill,
+  BsFillSaveFill,
+  BsTelephoneInboundFill,
+} from 'react-icons/bs';
 import { TbTruckDelivery } from 'react-icons/tb';
-import { MdFavorite, MdHelp } from 'react-icons/md';
+import { IoIosHome, IoMdHelpCircle } from 'react-icons/io';
+import { MdFavorite, MdHelp, MdFastfood } from 'react-icons/md';
 import { FaWallet } from 'react-icons/fa';
 import { useState } from 'react';
 
@@ -72,22 +77,22 @@ const Navbar = () => {
         <nav>
           <ul className="flex flex-col p-4 text-gray-800">
             <li className="text-xl py-4 flex">
-              <TbTruckDelivery size={25} className="mr-4" /> Orders
+              <IoIosHome size={25} className="mr-4" /> Home
             </li>
             <li className="text-xl py-4 flex">
-              <MdFavorite size={25} className="mr-4" /> Favorites
+              <MdFastfood size={25} className="mr-4" /> Our Foods
             </li>
             <li className="text-xl py-4 flex">
-              <FaWallet size={25} className="mr-4" /> Wallet
+              <MdFavorite size={25} className="mr-4" /> Favorite
             </li>
             <li className="text-xl py-4 flex">
-              <MdHelp size={25} className="mr-4" /> Help
+              <BsFillCartFill size={25} className="mr-4" /> Cart
             </li>
             <li className="text-xl py-4 flex">
-              <AiFillTag size={25} className="mr-4" /> Promotions
+              <BsTelephoneInboundFill size={20} className="mr-4" /> Contact Us
             </li>
             <li className="text-xl py-4 flex">
-              <BsFillSaveFill size={25} className="mr-4" /> Best Offer
+              <IoMdHelpCircle size={25} className="mr-4" /> Help
             </li>
           </ul>
         </nav>
