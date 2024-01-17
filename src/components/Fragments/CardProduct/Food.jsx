@@ -3,19 +3,25 @@ import { data } from '../../../data/data';
 import { useState } from 'react';
 import Card from '../../Elements/Card/Card';
 import FilterButton from '../../Elements/FilterButton/FilterButton';
+import { MdFavorite } from 'react-icons/md';
 
 const Food = () => {
   const [foods, setFoods] = useState(data);
   const [favorite, setFavorite] = useState([]);
 
-  const handleFavorite = (name, id) => {
+  const handleFavorite = (name, id, price, image) => {
     if (favorite.find((item) => item.name === name)) {
       setFavorite(favorite.filter((item) => item.name != name));
     } else {
-      setFavorite([...favorite, { name, id }]);
+      setFavorite([...favorite, { name, id, price, image }]);
     }
   };
-  console.log(favorite);
+  console.log(foods);
+
+  // Filter Favorite
+  const filterFavorit = () => {
+    setFoods(favorite);
+  };
 
   // Filter Type burgers/pizza/etc
   const filterType = (category) => {
@@ -48,6 +54,12 @@ const Food = () => {
           <p className="font-bold text-gray-700">Filter Type</p>
           <div className="flex justify-start flex-wrap gap-1">
             <FilterButton onClick={() => setFoods(data)}>All</FilterButton>
+            <FilterButton onClick={() => filterFavorit()}>
+              <div className='flex items-center gap-2'>
+                <MdFavorite />
+                Favorite
+              </div>
+            </FilterButton>
             <FilterButton onClick={() => filterType('burger')}>
               Burger
             </FilterButton>
@@ -59,9 +71,6 @@ const Food = () => {
             </FilterButton>
             <FilterButton onClick={() => filterType('chicken')}>
               Chicken
-            </FilterButton>
-            <FilterButton onClick={() => filterType('favorite')}>
-              Favorite
             </FilterButton>
           </div>
         </div>
@@ -82,17 +91,23 @@ const Food = () => {
 
       {/* Display foods */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
-        {foods.map((item) => (
-          <Card
-            key={item.id}
-            name={item.name}
-            price={item.price}
-            image={item.image}
-            onClick={() => handleFavorite(item.name, item.id)}
-            favorite={favorite}
-            id={item.id}
-          />
-        ))}
+        {foods.length > 0 ? (
+          foods.map((item) => (
+            <Card
+              key={item.id}
+              name={item.name}
+              price={item.price}
+              image={item.image}
+              onClick={() =>
+                handleFavorite(item.name, item.id, item.price, item.image)
+              }
+              favorite={favorite}
+              id={item.id}
+            />
+          ))
+        ) : (
+          <h1 className="font-bold text-2xl p-4 w-full">No One Matches Here</h1>
+        )}
       </div>
     </div>
   );
