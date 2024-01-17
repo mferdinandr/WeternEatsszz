@@ -46,12 +46,12 @@ const Navbar = () => {
         >
           Western<span className="font-bold text-orange-500">Eatsszz</span>
         </button>
-        <div className="hidden lg:flex items-center bg-gray-200 rounded-full  text-[14px]">
+        {/* <div className="hidden lg:flex items-center bg-gray-200 rounded-full  text-[14px]">
           <p className="bg-black text-white rounded-full p-1 px-2 mr-1">
             Delivery
           </p>
           <p className="p-1 px-2">Pickup</p>
-        </div>
+        </div> */}
       </div>
 
       {/* Seacrh Bar */}

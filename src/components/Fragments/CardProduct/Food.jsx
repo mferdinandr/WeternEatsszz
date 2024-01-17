@@ -5,12 +5,14 @@ import Card from '../../Elements/Card/Card';
 import FilterButton from '../../Elements/FilterButton/FilterButton';
 import { MdFavorite } from 'react-icons/md';
 import { AiOutlineClose } from 'react-icons/ai';
+import { BsFillCartFill } from 'react-icons/bs';
 
 const Food = ({ children, style, showItem, filter }) => {
   const [foods, setFoods] = useState(data);
   const [favorite, setFavorite] = useState([]);
   const [overlay, setOverlay] = useState(false);
   const [dataOverlay, setDataOverlay] = useState([]);
+  const [counter, setCounter] = useState(0);
 
   const handleFavorite = (name, id, price, image) => {
     if (favorite.find((item) => item.name === name)) {
@@ -31,7 +33,6 @@ const Food = ({ children, style, showItem, filter }) => {
       },
     ]);
   };
-  console.log(dataOverlay);
 
   const handleShowDetail = () => {
     setOverlay(!overlay);
@@ -148,15 +149,16 @@ const Food = ({ children, style, showItem, filter }) => {
       </div>
 
       {/* Overlay */}
-
       {overlay ? (
-        <div className="bg-black/90 fixed inset-y-4 inset-x-2 z-30 rounded-lg scale-100 duration-200 lg:inset-x-40 md:inset-x-10 h-max pb-10">
+        <div className="bg-black/90 fixed inset-y-4 inset-x-2 z-30 rounded-lg scale-100 duration-200 lg:inset-x-40 md:inset-x-10 h-max pb-10 shadow-orange-600/30 shadow-lg">
           <button
             className="w-full flex justify-end p-4"
             onClick={() => setOverlay(!overlay)}
           >
             <AiOutlineClose size={30} className="text-white absolute" />
           </button>
+
+          {/* Data */}
           {dataOverlay.map((item) => (
             <div
               key={item.id}
@@ -171,16 +173,40 @@ const Food = ({ children, style, showItem, filter }) => {
                   alt={item.name}
                   className="w-3/4 md:w-full h-[300px] md:h-[500px] object-cover rounded-t-lg"
                 />
-                <p className="text-white">Price : {item.price}</p>
+                <p className="text-white text-lg pt-2">Price : {item.price}</p>
               </div>
-              <div className="w-full text-xl px-5 md:pr-20 md:pl-10 ">
-                <p className="text-white text-sm md:text-lg lg:text-xl">{item.description}</p>
+              {/* Description */}
+              <div className="w-full text-xl px-5 md:pr-10 md:pl-10 ">
+                <p className="text-white text-sm md:text-lg lg:text-xl">
+                  {item.description}
+                </p>
+
+                {/* Add To Cart */}
+                <div className="flex mt-7 justify-end ">
+                  <div className="text-white flex items-center">
+                    <button
+                      onClick={() => {
+                        counter > 0 && setCounter(counter - 1);
+                      }}
+                    >
+                      -
+                    </button>
+                    <p>{counter}</p>
+                    <button onClick={() => setCounter(counter + 1)}>+</button>
+                  </div>
+                  <button
+                    className="bg-white text-black flex items-center py-2 rounded-full text-sm md:text-md lg:text-lg"
+                    // onClick={handleRouterCart}
+                  >
+                    <BsFillCartFill size={20} className="mr-2 " /> Add to Cart
+                  </button>
+                </div>
               </div>
             </div>
           ))}
         </div>
       ) : (
-        <div className=" fixed inset-y-4 inset-x-1 scale-0 duration-200 "></div>
+        <div className=" bg-black/90 fixed inset-y-4 inset-x-2 z-30 rounded-lg scale-0 duration-200 lg:inset-x-40 md:inset-x-10 "></div>
       )}
     </div>
   );

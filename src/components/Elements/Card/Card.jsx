@@ -19,7 +19,7 @@ const Card = ({
         onClick={handleShowDetail}
         src={image}
         alt={name}
-        className="w-full h-[200px] object-cover rounded-t-lg"
+        className="w-full h-[200px] object-cover rounded-t-lg hover:cursor-pointer"
         onClickCapture={handleClickImage}
       />
       <div className="sm:flex justify-between px-2 py-2 sm:py-4 ">
