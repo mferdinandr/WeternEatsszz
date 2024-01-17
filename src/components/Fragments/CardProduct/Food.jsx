@@ -5,7 +5,7 @@ import Card from '../../Elements/Card/Card';
 import FilterButton from '../../Elements/FilterButton/FilterButton';
 import { MdFavorite } from 'react-icons/md';
 
-const Food = ({ children, style }) => {
+const Food = ({ children, style, showItem, filter }) => {
   const [foods, setFoods] = useState(data);
   const [favorite, setFavorite] = useState([]);
 
@@ -47,63 +47,71 @@ const Food = ({ children, style }) => {
       </h1>
 
       {/* Filter Row*/}
-      <div className="flex flex-col lg:flex-row justify-between">
-        {/* Filter Type */}
-        <div>
-          <p className="font-bold text-gray-700">Filter Type</p>
-          <div className="flex justify-start flex-wrap gap-1">
-            <FilterButton onClick={() => setFoods(data)}>All</FilterButton>
-            <FilterButton onClick={() => filterFavorit()}>
-              <div className="flex items-center gap-2">
-                <MdFavorite />
-                Favorite
-              </div>
-            </FilterButton>
-            <FilterButton onClick={() => filterType('burger')}>
-              Burger
-            </FilterButton>
-            <FilterButton onClick={() => filterType('pizza')}>
-              Pizza
-            </FilterButton>
-            <FilterButton onClick={() => filterType('salad')}>
-              Salad
-            </FilterButton>
-            <FilterButton onClick={() => filterType('chicken')}>
-              Chicken
-            </FilterButton>
+      {filter ? (
+        <div className="flex flex-col lg:flex-row justify-between">
+          {/* Filter Type */}
+          <div>
+            <p className="font-bold text-gray-700">Filter Type</p>
+            <div className="flex justify-start flex-wrap gap-1">
+              <FilterButton onClick={() => setFoods(data)}>All</FilterButton>
+              <FilterButton onClick={() => filterFavorit()}>
+                <div className="flex items-center gap-2">
+                  <MdFavorite />
+                  Favorite
+                </div>
+              </FilterButton>
+              <FilterButton onClick={() => filterType('burger')}>
+                Burger
+              </FilterButton>
+              <FilterButton onClick={() => filterType('pizza')}>
+                Pizza
+              </FilterButton>
+              <FilterButton onClick={() => filterType('salad')}>
+                Salad
+              </FilterButton>
+              <FilterButton onClick={() => filterType('chicken')}>
+                Chicken
+              </FilterButton>
+            </div>
           </div>
-        </div>
 
-        {/* Filter Price */}
-        <div>
-          <p className="font-bold text-gray-700">Filter Price</p>
-          <div className="flex justify-start flex-wrap gap-1">
-            <FilterButton onClick={() => filterPrice('$')}>$</FilterButton>
-            <FilterButton onClick={() => filterPrice('$$')}>$$</FilterButton>
-            <FilterButton onClick={() => filterPrice('$$$')}>$$$</FilterButton>
-            <FilterButton onClick={() => filterPrice('$$$$')}>
-              $$$$
-            </FilterButton>
+          {/* Filter Price */}
+          <div>
+            <p className="font-bold text-gray-700">Filter Price</p>
+            <div className="flex justify-start flex-wrap gap-1">
+              <FilterButton onClick={() => filterPrice('$')}>$</FilterButton>
+              <FilterButton onClick={() => filterPrice('$$')}>$$</FilterButton>
+              <FilterButton onClick={() => filterPrice('$$$')}>
+                $$$
+              </FilterButton>
+              <FilterButton onClick={() => filterPrice('$$$$')}>
+                $$$$
+              </FilterButton>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        ''
+      )}
 
       {/* Display foods */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
         {foods.length > 0 ? (
-          foods.map((item) => (
-            <Card
-              key={item.id}
-              name={item.name}
-              price={item.price}
-              image={item.image}
-              onClick={() =>
-                handleFavorite(item.name, item.id, item.price, item.image)
-              }
-              favorite={favorite}
-              id={item.id}
-            />
-          ))
+          foods
+            .slice(0, showItem)
+            .map((item) => (
+              <Card
+                key={item.id}
+                name={item.name}
+                price={item.price}
+                image={item.image}
+                onClick={() =>
+                  handleFavorite(item.name, item.id, item.price, item.image)
+                }
+                favorite={favorite}
+                id={item.id}
+              />
+            ))
         ) : (
           <h1 className="font-bold text-2xl p-4 w-full">No One Matches Here</h1>
         )}

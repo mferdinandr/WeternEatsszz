@@ -15,7 +15,9 @@ function MainPage() {
       <Navbar></Navbar>
       <Hero></Hero>
       <HeadlineCards></HeadlineCards>
-      <Food>Top Rate Our Menu</Food>
+      <Food showItem={8} filter={false}>
+        Top Rate Our Menu
+      </Food>
       <button
         className="m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white w-1/2 flex justify-center mx-auto"
         onClick={handleLoadMore}

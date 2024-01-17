@@ -6,7 +6,7 @@ const OurFoods = () => {
     <div>
       <Navbar></Navbar>
       <div className="mt-10">
-        <Food>Our Menu</Food>
+        <Food filter={true}>Our Menu</Food>
       </div>
     </div>
   );
