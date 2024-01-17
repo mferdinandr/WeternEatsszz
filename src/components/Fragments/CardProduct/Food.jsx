@@ -4,10 +4,12 @@ import { useState } from 'react';
 import Card from '../../Elements/Card/Card';
 import FilterButton from '../../Elements/FilterButton/FilterButton';
 import { MdFavorite } from 'react-icons/md';
+import { AiOutlineClose } from 'react-icons/ai';
 
 const Food = ({ children, style, showItem, filter }) => {
   const [foods, setFoods] = useState(data);
   const [favorite, setFavorite] = useState([]);
+  const [overlay, setOverlay] = useState(false);
 
   const handleFavorite = (name, id, price, image) => {
     if (favorite.find((item) => item.name === name)) {
@@ -15,6 +17,10 @@ const Food = ({ children, style, showItem, filter }) => {
     } else {
       setFavorite([...favorite, { name, id, price, image }]);
     }
+  };
+
+  const handleShowDetail = () => {
+    setOverlay(!overlay);
   };
 
   // Filter Favorite
@@ -55,7 +61,7 @@ const Food = ({ children, style, showItem, filter }) => {
             <div className="flex justify-start flex-wrap gap-1">
               <FilterButton onClick={() => setFoods(data)}>All</FilterButton>
               <FilterButton onClick={() => filterFavorit()}>
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2" id="favorite">
                   <MdFavorite />
                   Favorite
                 </div>
@@ -105,6 +111,7 @@ const Food = ({ children, style, showItem, filter }) => {
                 name={item.name}
                 price={item.price}
                 image={item.image}
+                handleShowDetail={handleShowDetail}
                 onClick={() =>
                   handleFavorite(item.name, item.id, item.price, item.image)
                 }
@@ -116,6 +123,20 @@ const Food = ({ children, style, showItem, filter }) => {
           <h1 className="font-bold text-2xl p-4 w-full">No One Matches Here</h1>
         )}
       </div>
+
+      {/* Overlay */}
+      {overlay ? (
+        <div className="bg-black/90 fixed inset-y-4 inset-x-1 z-30 rounded-lg scale-100 duration-200 lg:inset-x-40 md:inset-x-10">
+          <button
+            className="w-full flex justify-end p-4"
+            onClick={() => setOverlay(!overlay)}
+          >
+            <AiOutlineClose size={30} className="text-white" />
+          </button>
+        </div>
+      ) : (
+        <div className=" fixed inset-y-4 inset-x-1 scale-0 duration-200 "></div>
+      )}
     </div>
   );
 };

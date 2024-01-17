@@ -27,8 +27,8 @@ const Navbar = () => {
     window.location.href = '/home';
   };
 
-  const handleRouterFavorite = () => {
-    window.location.href = '/favorite';
+  const handleRouterSpecialOffer = () => {
+    window.location.href = '/specialoffer';
   };
   const handleRouterCart = () => {
     window.location.href = '/cart';
@@ -47,9 +47,12 @@ const Navbar = () => {
         <div className="cursor-pointer" onClick={() => setNavOpen(!navOpen)}>
           <AiOutlineMenu size={30} />
         </div>
-        <h1 className="text-xl sm:text-xl lg:text-4xl px-2">
+        <button
+          className="text-xl sm:text-xl lg:text-4xl px-2 border-0"
+          onClick={handleRouterHome}
+        >
           Western<span className="font-bold">Eatsszz</span>
-        </h1>
+        </button>
         <div className="hidden lg:flex items-center bg-gray-200 rounded-full  text-[14px]">
           <p className="bg-black text-white rounded-full p-1 px-2 mr-1">
             Delivery
@@ -110,9 +113,12 @@ const Navbar = () => {
               </button>
             </li>
             <li className="text-xl py-4 flex">
-              <button className="flex border-0" onClick={handleRouterFavorite}>
+              <button
+                className="flex border-0"
+                onClick={handleRouterSpecialOffer}
+              >
                 <MdFavorite size={25} className="mr-4" />
-                Favorite
+                Special Offer
               </button>
             </li>
             <li className="text-xl py-4 flex">
