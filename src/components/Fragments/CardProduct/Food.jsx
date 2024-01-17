@@ -101,7 +101,7 @@ const Food = ({ children, style, showItem, filter }) => {
       )}
 
       {/* Display foods */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 pt-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 pt-4">
         {foods.length > 0 ? (
           foods
             .slice(0, showItem)

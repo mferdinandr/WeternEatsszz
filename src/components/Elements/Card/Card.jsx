@@ -20,9 +20,9 @@ const Card = ({
         alt={name}
         className="w-full h-[200px] object-cover rounded-t-lg"
       />
-      <div className="flex justify-between px-2 py-4">
+      <div className="sm:flex justify-between px-2 py-2 sm:py-4 ">
         <p className="font-bold">{name}</p>
-        <div className="flex gap-5 items-center">
+        <div className="flex gap-5 justify-between text-end pt-2 sm:pt-0">
           <MdFavorite
             size={20}
             className={
