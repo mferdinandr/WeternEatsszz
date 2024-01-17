@@ -55,7 +55,7 @@ const Navbar = () => {
           className="text-xl sm:text-xl lg:text-4xl px-2 border-0"
           onClick={handleRouterHome}
         >
-          Western<span className="font-bold">Eatsszz</span>
+          Western<span className="font-bold text-orange-500">Eatsszz</span>
         </button>
         <div className="hidden lg:flex items-center bg-gray-200 rounded-full  text-[14px]">
           <p className="bg-black text-white rounded-full p-1 px-2 mr-1">
