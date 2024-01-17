@@ -6,6 +6,16 @@ import FilterButton from '../../Elements/FilterButton/FilterButton';
 
 const Food = () => {
   const [foods, setFoods] = useState(data);
+  const [favorite, setFavorite] = useState([]);
+
+  const handleFavorite = (name, id) => {
+    if (favorite.find((item) => item.name === name)) {
+      setFavorite(favorite.filter((item) => item.name != name));
+    } else {
+      setFavorite([...favorite, { name, id }]);
+    }
+  };
+  console.log(favorite);
 
   // Filter Type burgers/pizza/etc
   const filterType = (category) => {
@@ -50,6 +60,9 @@ const Food = () => {
             <FilterButton onClick={() => filterType('chicken')}>
               Chicken
             </FilterButton>
+            <FilterButton onClick={() => filterType('favorite')}>
+              Favorite
+            </FilterButton>
           </div>
         </div>
 
@@ -75,6 +88,9 @@ const Food = () => {
             name={item.name}
             price={item.price}
             image={item.image}
+            onClick={() => handleFavorite(item.name, item.id)}
+            favorite={favorite}
+            id={item.id}
           />
         ))}
       </div>
