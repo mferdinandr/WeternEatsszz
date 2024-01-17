@@ -14,12 +14,17 @@ const Food = ({ children, style, showItem, filter }) => {
   const [dataOverlay, setDataOverlay] = useState([]);
   const [counter, setCounter] = useState(0);
 
-  const handleFavorite = (name, id, price, image) => {
+  const handleFavorite = (name, id, price, image, description) => {
     if (favorite.find((item) => item.name === name)) {
       setFavorite(favorite.filter((item) => item.name != name));
     } else {
-      setFavorite([...favorite, { name, id, price, image }]);
+      setFavorite([...favorite, { name, id, price, image, description }]);
     }
+  };
+
+  const handleOverlay = () => {
+    setOverlay(!overlay);
+    setCounter(0);
   };
 
   const handleClickImage = (name, id, price, image, description) => {
@@ -62,7 +67,7 @@ const Food = ({ children, style, showItem, filter }) => {
   };
 
   return (
-    <div className={(style, 'max-w-{1640px} m-auto px-4 py-12')}>
+    <div className={(style, 'max-w-{1640px} m-auto px-4 py-16')}>
       <h1 className="text-orange-600 font-bold text-4xl text-center">
         {children}
       </h1>
@@ -137,7 +142,13 @@ const Food = ({ children, style, showItem, filter }) => {
                 }
                 handleShowDetail={handleShowDetail}
                 onClick={() =>
-                  handleFavorite(item.name, item.id, item.price, item.image)
+                  handleFavorite(
+                    item.name,
+                    item.id,
+                    item.price,
+                    item.image,
+                    item.description
+                  )
                 }
                 favorite={favorite}
                 id={item.id}
@@ -153,7 +164,7 @@ const Food = ({ children, style, showItem, filter }) => {
         <div className="bg-black/90 fixed inset-y-4 inset-x-2 z-30 rounded-lg scale-100 duration-200 lg:inset-x-40 md:inset-x-10 h-max pb-10 shadow-orange-600/30 shadow-lg">
           <button
             className="w-full flex justify-end p-4"
-            onClick={() => setOverlay(!overlay)}
+            onClick={handleOverlay}
           >
             <AiOutlineClose size={30} className="text-white absolute" />
           </button>
