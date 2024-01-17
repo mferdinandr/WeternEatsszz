@@ -19,6 +19,27 @@ import { useState } from 'react';
 const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
 
+  const handleRouterOurFoods = () => {
+    window.location.href = '/foods';
+  };
+
+  const handleRouterHome = () => {
+    window.location.href = '/home';
+  };
+
+  const handleRouterFavorite = () => {
+    window.location.href = '/favorite';
+  };
+  const handleRouterCart = () => {
+    window.location.href = '/cart';
+  };
+  const handleRouterContactUs = () => {
+    window.location.href = '/contactus';
+  };
+  const handleRouterHelp = () => {
+    window.location.href = '/help';
+  };
+
   return (
     <div className="w-full mx-auto flex justify-between items-center p-4 fixed top-0 right-0 z-20 bg-white shadow-lg">
       {/* Left side */}
@@ -77,22 +98,40 @@ const Navbar = () => {
         <nav>
           <ul className="flex flex-col p-4 text-gray-800">
             <li className="text-xl py-4 flex">
-              <IoIosHome size={25} className="mr-4" /> Home
+              <button className="flex border-0" onClick={handleRouterHome}>
+                <IoIosHome size={25} className="mr-4" />
+                Home
+              </button>
             </li>
             <li className="text-xl py-4 flex">
-              <MdFastfood size={25} className="mr-4" /> Our Foods
+              <button className="flex border-0" onClick={handleRouterOurFoods}>
+                <MdFastfood size={25} className="mr-4" />
+                Our Foods
+              </button>
             </li>
             <li className="text-xl py-4 flex">
-              <MdFavorite size={25} className="mr-4" /> Favorite
+              <button className="flex border-0" onClick={handleRouterFavorite}>
+                <MdFavorite size={25} className="mr-4" />
+                Favorite
+              </button>
             </li>
             <li className="text-xl py-4 flex">
-              <BsFillCartFill size={25} className="mr-4" /> Cart
+              <button className="flex border-0" onClick={handleRouterCart}>
+                <BsFillCartFill size={25} className="mr-4" />
+                Cart
+              </button>
             </li>
             <li className="text-xl py-4 flex">
-              <BsTelephoneInboundFill size={20} className="mr-4" /> Contact Us
+              <button className="flex border-0" onClick={handleRouterContactUs}>
+                <BsTelephoneInboundFill size={25} className="mr-4" />
+                Contact Us
+              </button>
             </li>
             <li className="text-xl py-4 flex">
-              <IoMdHelpCircle size={25} className="mr-4" /> Help
+              <button className="flex border-0" onClick={handleRouterHelp}>
+                <IoMdHelpCircle size={25} className="mr-4" />
+                Help
+              </button>
             </li>
           </ul>
         </nav>

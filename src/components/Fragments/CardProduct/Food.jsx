@@ -5,7 +5,7 @@ import Card from '../../Elements/Card/Card';
 import FilterButton from '../../Elements/FilterButton/FilterButton';
 import { MdFavorite } from 'react-icons/md';
 
-const Food = () => {
+const Food = ({ children, style }) => {
   const [foods, setFoods] = useState(data);
   const [favorite, setFavorite] = useState([]);
 
@@ -16,7 +16,6 @@ const Food = () => {
       setFavorite([...favorite, { name, id, price, image }]);
     }
   };
-  console.log(foods);
 
   // Filter Favorite
   const filterFavorit = () => {
@@ -42,9 +41,9 @@ const Food = () => {
   };
 
   return (
-    <div className="max-w-{1640px} m-auto px-4 py-12">
+    <div className={(style, 'max-w-{1640px} m-auto px-4 py-12')}>
       <h1 className="text-orange-600 font-bold text-4xl text-center">
-        Top Rated Menu Items
+        {children}
       </h1>
 
       {/* Filter Row*/}
@@ -109,9 +108,6 @@ const Food = () => {
           <h1 className="font-bold text-2xl p-4 w-full">No One Matches Here</h1>
         )}
       </div>
-      <button className="m-1 border-orange-600 text-orange-600 hover:bg-orange-600 hover:text-white w-1/2 flex justify-center mx-auto mt-8">
-        More Foods
-      </button>
     </div>
   );
 };
