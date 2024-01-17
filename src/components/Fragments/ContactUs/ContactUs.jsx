@@ -68,6 +68,7 @@ const Contact = () => {
       <div className="w-full col-span-3 pt-5 mx-auto sm:w-3/4 lg:pt-1">
         <form
           action={`https://wa.me/6285727721799?text=Hai%20WesternEatsszz%2C%20i%27am%20${name}%20and%20i%20wanna%20${option}%20you%20abaout%20WesternEatsszz.%0A%0A${text}`}
+          target="_blank"
           className="flex flex-col gap-2"
         >
           <input
