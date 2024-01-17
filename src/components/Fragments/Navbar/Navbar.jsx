@@ -15,7 +15,7 @@ const Navbar = () => {
   const [navOpen, setNavOpen] = useState(false);
 
   return (
-    <div className="max-w-[1640px] mx-auto flex justify-between items-center p-4">
+    <div className="w-full mx-auto flex justify-between items-center p-4 fixed top-0 right-0 z-20 bg-white">
       {/* Left side */}
       <div className="flex items-center ">
         <div className="cursor-pointer" onClick={() => setNavOpen(!navOpen)}>
