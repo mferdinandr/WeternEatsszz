@@ -40,6 +40,10 @@ const Navbar = () => {
     window.location.href = '/help';
   };
 
+  const handleSubmitSearch = () => {
+    window.location.href = './foods';
+  };
+
   return (
     <div className="w-full mx-auto flex justify-between items-center p-4 fixed top-0 right-0 z-20 bg-white shadow-lg">
       {/* Left side */}
@@ -64,11 +68,13 @@ const Navbar = () => {
       {/* Seacrh Bar */}
       <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
         <AiOutlineSearch size={30} />
-        <input
-          className="bg-transparent p-2 pl-3 w-full focus:outline-none"
-          type="text"
-          placeholder="Search foods..."
-        />
+        <form action="" onSubmit={handleSubmitSearch}>
+          <input
+            className="bg-transparent p-2 pl-3 w-full focus:outline-none"
+            type="text"
+            placeholder="Search foods..."
+          />
+        </form>
       </div>
 
       {/* Cart Button */}
