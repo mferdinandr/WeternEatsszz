@@ -7,6 +7,7 @@ import MainPage from './pages/index.jsx';
 import OurFoods from './pages/ourFoods.jsx';
 import ErrorPage from './pages/ErrorPages.jsx';
 import ContactUs from './pages/ContactUs.jsx';
+import Help from './pages/Help.jsx';
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
   {
     path: '/contactus',
     element: <ContactUs></ContactUs>,
+  },
+  {
+    path: '/help',
+    element: <Help></Help>,
   },
 ]);
 

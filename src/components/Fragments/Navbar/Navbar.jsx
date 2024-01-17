@@ -11,6 +11,7 @@ import {
   BsTelephoneInboundFill,
 } from 'react-icons/bs';
 import { TbTruckDelivery } from 'react-icons/tb';
+import { BiSolidDiscount } from 'react-icons/bi';
 import { IoIosHome, IoMdHelpCircle } from 'react-icons/io';
 import { MdFavorite, MdHelp, MdFastfood } from 'react-icons/md';
 import { FaWallet } from 'react-icons/fa';
@@ -41,7 +42,7 @@ const Navbar = () => {
   };
 
   const handleSubmitSearch = () => {
-    window.location.href = './foods';
+    window.location.href = '/foods';
   };
 
   return (
@@ -68,7 +69,7 @@ const Navbar = () => {
       {/* Seacrh Bar */}
       <div className="bg-gray-200 rounded-full flex items-center px-2 w-[200px] sm:w-[400px] lg:w-[500px]">
         <AiOutlineSearch size={30} />
-        <form action="" onSubmit={handleSubmitSearch}>
+        <form action="" onSubmit={() => handleRouterOurFoods}>
           <input
             className="bg-transparent p-2 pl-3 w-full focus:outline-none"
             type="text"
@@ -123,7 +124,7 @@ const Navbar = () => {
                 className="flex border-0"
                 onClick={handleRouterSpecialOffer}
               >
-                <MdFavorite size={25} className="mr-4" />
+                <BiSolidDiscount size={25} className="mr-4" />
                 Special Offer
               </button>
             </li>
