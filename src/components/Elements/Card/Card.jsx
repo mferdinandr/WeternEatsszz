@@ -11,6 +11,7 @@ const Card = ({
   favorite,
   id,
   handleShowDetail,
+  handleClickImage,
 }) => {
   return (
     <div className="border shadow-lg rounded-lg hover:scale-105 duration-300">
@@ -19,6 +20,7 @@ const Card = ({
         src={image}
         alt={name}
         className="w-full h-[200px] object-cover rounded-t-lg"
+        onClickCapture={handleClickImage}
       />
       <div className="sm:flex justify-between px-2 py-2 sm:py-4 ">
         <p className="font-bold">{name}</p>

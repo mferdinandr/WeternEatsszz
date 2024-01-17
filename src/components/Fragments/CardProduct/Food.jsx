@@ -10,6 +10,7 @@ const Food = ({ children, style, showItem, filter }) => {
   const [foods, setFoods] = useState(data);
   const [favorite, setFavorite] = useState([]);
   const [overlay, setOverlay] = useState(false);
+  const [dataOverlay, setDataOverlay] = useState([]);
 
   const handleFavorite = (name, id, price, image) => {
     if (favorite.find((item) => item.name === name)) {
@@ -18,6 +19,19 @@ const Food = ({ children, style, showItem, filter }) => {
       setFavorite([...favorite, { name, id, price, image }]);
     }
   };
+
+  const handleClickImage = (name, id, price, image, description) => {
+    setDataOverlay([
+      {
+        name: name,
+        id: id,
+        price: price,
+        image: image,
+        description: description,
+      },
+    ]);
+  };
+  console.log(dataOverlay);
 
   const handleShowDetail = () => {
     setOverlay(!overlay);
@@ -111,6 +125,15 @@ const Food = ({ children, style, showItem, filter }) => {
                 name={item.name}
                 price={item.price}
                 image={item.image}
+                handleClickImage={() =>
+                  handleClickImage(
+                    item.name,
+                    item.id,
+                    item.price,
+                    item.image,
+                    item.description
+                  )
+                }
                 handleShowDetail={handleShowDetail}
                 onClick={() =>
                   handleFavorite(item.name, item.id, item.price, item.image)
@@ -125,14 +148,36 @@ const Food = ({ children, style, showItem, filter }) => {
       </div>
 
       {/* Overlay */}
+
       {overlay ? (
         <div className="bg-black/90 fixed inset-y-4 inset-x-1 z-30 rounded-lg scale-100 duration-200 lg:inset-x-40 md:inset-x-10">
           <button
             className="w-full flex justify-end p-4"
             onClick={() => setOverlay(!overlay)}
           >
-            <AiOutlineClose size={30} className="text-white" />
+            <AiOutlineClose size={30} className="text-white absolute" />
           </button>
+          {dataOverlay.map((item) => (
+            <div
+              key={item.id}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 items-center my-auto h-3/4"
+            >
+              <div className="ml-10">
+                <h1 className="text-white font-bold text-3xl pb-3">
+                  {item.name}
+                </h1>
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="w-3/4 md:w-full h-[300px] md:h-[500px] object-cover rounded-t-lg"
+                />
+                <p className="text-white">Price : {item.price}</p>
+              </div>
+              <div className="w-full text-xl px-5 md:pr-20 md:pl-10 ">
+                <p className="text-white text-sm md:text-lg lg:text-xl">{item.description}</p>
+              </div>
+            </div>
+          ))}
         </div>
       ) : (
         <div className=" fixed inset-y-4 inset-x-1 scale-0 duration-200 "></div>

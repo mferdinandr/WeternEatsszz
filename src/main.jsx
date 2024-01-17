@@ -8,6 +8,7 @@ import OurFoods from './pages/ourFoods.jsx';
 import ErrorPage from './pages/ErrorPages.jsx';
 import ContactUs from './pages/ContactUs.jsx';
 import Help from './pages/Help.jsx';
+import Cart from './pages/Cart.jsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: '/help',
     element: <Help></Help>,
+  },
+  {
+    path: '/cart',
+    element: <Cart></Cart>,
   },
 ]);
 

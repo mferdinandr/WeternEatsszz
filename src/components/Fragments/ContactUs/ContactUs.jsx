@@ -23,10 +23,6 @@ const Contact = () => {
     setOption(event.target.value);
   };
 
-  console.log(name);
-  console.log(text);
-  console.log(option);
-
   return (
     <div className="grid grid-cols-1 lg:grid-cols-5 h-screen content-center px-10 sm:mt-0 mt-10">
       {/*Contact Us */}
