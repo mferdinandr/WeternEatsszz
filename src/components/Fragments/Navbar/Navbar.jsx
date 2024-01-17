@@ -1,20 +1,8 @@
-import React from 'react';
-import {
-  AiOutlineMenu,
-  AiOutlineSearch,
-  AiOutlineClose,
-  AiFillTag,
-} from 'react-icons/ai';
-import {
-  BsFillCartFill,
-  BsFillSaveFill,
-  BsTelephoneInboundFill,
-} from 'react-icons/bs';
-import { TbTruckDelivery } from 'react-icons/tb';
+import { AiOutlineMenu, AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
+import { BsFillCartFill, BsTelephoneInboundFill } from 'react-icons/bs';
 import { BiSolidDiscount } from 'react-icons/bi';
 import { IoIosHome, IoMdHelpCircle } from 'react-icons/io';
-import { MdFavorite, MdHelp, MdFastfood } from 'react-icons/md';
-import { FaWallet } from 'react-icons/fa';
+import { MdFastfood } from 'react-icons/md';
 import { useState } from 'react';
 
 const Navbar = () => {

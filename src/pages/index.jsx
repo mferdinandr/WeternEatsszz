@@ -24,7 +24,7 @@ function MainPage() {
       >
         Load More
       </button>
-      {/* <Category></Category> */}
+      <Category></Category>
     </>
   );
 }
